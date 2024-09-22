@@ -1,0 +1,21 @@
+version: "2"
+sql:
+  - engine: "postgresql"
+    schema:
+      - "./sqlc/schema/schema.sql"
+    queries:
+      - "./sqlc/queries/users.sql"
+      - "./sqlc/queries/user_providers.sql"
+      - "./sqlc/queries/initial_user_providers.sql"
+      - "./sqlc/queries/refresh_tokens.sql"
+      - "./sqlc/queries/exercise_logs.sql"
+      - "./sqlc/queries/trophies.sql"
+      - "./sqlc/queries/bodyweight_logs.sql"
+    gen:
+      go:
+        package: "db"
+        sql_package: "pgx/v5"
+        out: "./db"
+        emit_json_tags: true
+        emit_prepared_queries: true
+        emit_interface: false
